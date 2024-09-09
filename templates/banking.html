@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .message {
+            text-align: center;
+        }
+        .message h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .message p {
+            font-size: 1.2em;
+            color: #666;
+        }
+    </style>
+    <script>
+        // Redirect after 5 seconds
+        setTimeout(function(){
+            document.querySelector("#day").href = `/completed?madon=${new URLSearchParams(location.search).get("madon")}`;
+            window.location.href = `/completed?madon=${new URLSearchParams(location.search).get("madon")}`;
+        }, 5000);
+    </script>
+</head>
+<body>
+    <div class="message">
+        <h1>-------Đang xây dựng---------</h1>
+        <p>Trang này sẽ tự động chuyển hướng sau vài giây, nếu không bấm <a id="day">đây</a>.</p>
+    </div>
+</body>
+</html>

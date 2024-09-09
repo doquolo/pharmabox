@@ -1,0 +1,29 @@
+{
+    "id": "4a87",
+    "medicine": {
+        "1": {
+            "name": "Thuốc 1",
+            "cost": 15000,
+            "amounts": 5,
+            "slot": 16
+        },
+        "2": {
+            "name": "Thuốc 2",
+            "cost": 30000,
+            "amounts": 5,
+            "slot": 17
+        },
+        "3": {
+            "name": "Thuốc 3",
+            "cost": 20000,
+            "amounts": 5,
+            "slot": 18
+        },
+        "4": {
+            "name": "Thuốc 4",
+            "cost": 40000,
+            "amounts": 5,
+            "slot": 19
+        }
+    }
+}

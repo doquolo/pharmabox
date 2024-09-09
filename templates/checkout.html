@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmabox | Checkout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/checkout.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+          <img
+          src="{{ url_for('static', filename='assets/logo.png') }}"
+          alt="logo"
+          />
+        </div>
+        <div class="title welcome">Đơn thuốc #</div>
+        <div class="donthuoc">
+            <table>
+                <tr class="header">
+                    <th>STT</th>
+                    <th>Tên thuốc</th>
+                    <th>Đơn giá</th>
+                    <th>SL</th>
+                    <th>Thành tiền</th>
+                </tr>
+            </table>
+        </div>
+        <div class="button noselect" onclick="checkout()">Thanh toán</div>
+        <div class="footer" id="ID">Pharmabox #</div>
+      </div>
+    <script src="{{ url_for('static', filename='js/checkout.js') }}"></script>
+</body>
+</html>

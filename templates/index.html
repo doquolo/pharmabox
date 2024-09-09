@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharmabox | Home</title>
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/index.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img
+        src="{{ url_for('static', filename='assets/logo.png') }}"
+        alt="logo"
+        />
+      </div>
+      <div class="welcome" style="text-align: center;">Xin chào</div>
+      <input type="text" class="number" id="madon" placeholder="Nhập mã đơn" disabled/>
+      <div class="numpad">
+        <div class="keys noselect" onclick="handleNumpad(this)">1</div>
+        <div class="keys noselect" onclick="handleNumpad(this)">2</div>
+        <div class="keys noselect" onclick="handleNumpad(this)">3</div>
+        <div class="keys noselect" onclick="handleNumpad(this)">4</div>
+        <div class="keys noselect" onclick="handleNumpad(this)">5</div>
+        <div class="keys noselect" onclick="handleNumpad(this)">6</div>
+        <div class="keys noselect" onclick="handleNumpad(this)">7</div>
+        <div class="keys noselect" onclick="handleNumpad(this)">8</div>
+        <div class="keys noselect" onclick="handleNumpad(this)">9</div>
+        <div class="keys noselect" onclick="handleNumpad(this)">bksp</div>
+        <div class="keys noselect" onclick="handleNumpad(this)">0</div>
+        <div class="keys noselect" onclick="handleNumpad(this)">enter</div>
+      </div>
+      <div class="footer" id="ID">Pharmabox #</div>
+    </div>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+  </body>
+  </html>
+  

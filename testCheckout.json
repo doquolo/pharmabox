@@ -1,0 +1,27 @@
+{
+    "1":  [
+        {
+            "id": "1",
+            "amount": 1,
+            "usage": "Thoa mặt 1 lần/ngày"
+        },
+        {
+            "id": "4",
+            "amount": 1,
+            "usage": "Sáng 1v / Chiều 1v"
+        }
+    ],
+    "2": [
+        {
+            "id": "2",
+            "amount": 1,
+            "usage": "Thoa mặt 2 lần/ngày"
+        },
+        {
+            "id": "3",
+            "amount": 1,
+            "usage": "Sáng 3v / Chiều 2v"
+        }
+    ]
+
+}

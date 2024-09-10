@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmabox | Hoan tat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/completed.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img
+            src="{{ url_for('static', filename='assets/logo.png') }}"
+            alt="logo"
+            />
+        </div>
+        <div class="completed">
+            <div class="icon">
+                <img src="{{ url_for('static', filename='assets/tick.png') }}" alt="tick">
+                <p class="welcome helper_text">Thanh toán hoàn tất, chú ý cây thuốc để nhận thuốc bạn nhé!</p>
+                <p class="welcome helper_text">Cảm ơn bạn đã sử dụng dịch vụ</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

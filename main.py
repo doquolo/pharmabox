@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import json
+# import pharmabox_helper
 
 with open("stationInfo.json", "r", encoding='utf-8') as file:
     data = json.loads(file.read())
@@ -21,6 +22,21 @@ def checkout():
 def banking():
     return render_template("banking.html")
 
+@app.route('/completed')
+def completed():
+    with open('testCheckout.json', 'r', encoding='utf-8') as file:
+        datacheckout = json.loads(file.read())
+        file.close()
+    madon = request.args.get('madon')
+    donthuoc = datacheckout[madon]
+    command = []
+    for thuoc in donthuoc:
+        for i in range(thuoc["amount"]):
+            command.append(data["medicine"][thuoc['id']]["slot"])
+    print(command)
+    # pharmabox_helper.dropMedicine(command)
+    return render_template('completed.html')
+
 
 @app.route("/getMachineID")
 def getMachineID():
@@ -41,33 +57,12 @@ def getCheckoutInfo():
     # TODO: link with db to return correct checkout info
     code = request.args.get("madon")
 
-    if code == "1":
-        return jsonify(
-            [
-                {
-                    "id": "1",
-                    "amount": 1,
-                },
-                {
-                    "id": "4",
-                    "amount": 1,
-                },
-            ]
-        )
-    elif code == "2":
-        return jsonify(
-            [
-                {
-                    "id": "2",
-                    "amount": 1,
-                },
-                {
-                    "id": "3",
-                    "amount": 1,
-                },
-            ]
-        )
-    else:
+    with open('testCheckout.json', 'r', encoding='utf-8') as file:
+        data = json.loads(file.read())
+        file.close()
+    try:
+        return data[code]
+    except Exception as e:
         return jsonify({"state": "error", "reason": "invalid"})
 
 

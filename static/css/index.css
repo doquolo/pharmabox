@@ -48,8 +48,7 @@ html {
 
 .numpad {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     width: 70%;
     margin: 2rem 0rem;
@@ -57,7 +56,14 @@ html {
     font-size: 20px;
 }
 
-.numpad > .keys {
+.numpad > .numpad-row {
+    margin-bottom: .25rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.numpad > .numpad-row > .keys {
     border: 1px solid black;
     height: 70px;
     width: 70px;
@@ -69,7 +75,7 @@ html {
     font-size: 20px;
     font-weight: bold;
 }
-.numpad > .keys:active {
+.numpad > .numpad-row > .keys:active {
     background-color: #555555;
 }
 

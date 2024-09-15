@@ -1,5 +1,12 @@
 from flask import Flask, render_template, request, jsonify
 import json
+
+import firebase_admin
+from firebase_admin import firestore
+
+creds = firebase_admin.credentials.Certificate("firebase_creds.json")
+default_app = firebase_admin.initialize_app(creds)
+firestore = firestore.client()
 # import pharmabox_helper
 
 with open("stationInfo.json", "r", encoding='utf-8') as file:
@@ -7,7 +14,6 @@ with open("stationInfo.json", "r", encoding='utf-8') as file:
     file.close()
 
 app = Flask(__name__)
-
 
 @app.route("/")
 def home():
@@ -24,14 +30,11 @@ def banking():
 
 @app.route('/completed')
 def completed():
-    with open('testCheckout.json', 'r', encoding='utf-8') as file:
-        datacheckout = json.loads(file.read())
-        file.close()
     madon = request.args.get('madon')
-    donthuoc = datacheckout[madon]
+    donthuoc = (firestore.collection("prescriptions").document(str(madon)).get()).to_dict()['list']
     command = []
     for thuoc in donthuoc:
-        for i in range(thuoc["amount"]):
+        for i in range(int(thuoc["amount"])):
             command.append(data["medicine"][thuoc['id']]["slot"])
     print(command)
     # pharmabox_helper.dropMedicine(command)
@@ -55,15 +58,11 @@ def getMedicineInfo():
 @app.route("/getCheckoutInfo")
 def getCheckoutInfo():
     # TODO: link with db to return correct checkout info
-    code = request.args.get("madon")
-
-    with open('testCheckout.json', 'r', encoding='utf-8') as file:
-        data = json.loads(file.read())
-        file.close()
-    try:
-        return data[code]
-    except Exception as e:
+    madon  = request.args.get("madon")
+    donthuoc = (firestore.collection("prescriptions").document(str(madon)).get()).to_dict()
+    if (donthuoc == None):
         return jsonify({"state": "error", "reason": "invalid"})
+    else:
+        return donthuoc['list']
 
-
-app.run("0.0.0.0", debug=True)
+app.run("0.0.0.0", port=80, debug=True)
